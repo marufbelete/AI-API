@@ -15,14 +15,14 @@ exports.generateCoverLetter = async (req, res, next) => {
     const prompt= `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Elevate the following skills and experiences:
     ${skill_highlight}` 
 
-    // const cover_letter= await createCompletion(prompt)
+    const cover_letter= await createCompletion(prompt)
     // console.log(cover_letter)
-   await new Promise(resolve => {
-      setTimeout(() => {
-        resolve('Promise resolved after 2 seconds');
-      }, 2000);
-    });
-    return res.json("show this reusltgjsfkagjaksjdhfgkhasdgkgsdkfsjgdfkGSDHKFGYYYYYYYYYYYYYYYYYYYYYYYYYDHSGKFDGAHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHD")
+  //  await new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve('Promise resolved after 2 seconds');
+  //     }, 2000);
+  //   });
+    return res.json(cover_letter)
     // return res.json(cover_letter)
   }
   catch (err) {
