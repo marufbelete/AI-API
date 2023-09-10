@@ -76,6 +76,8 @@ exports.logoutUser = async (req, res, next) => {
       success: true
     })
   } catch (err) {
+    console.log(err)
+
     next(err);
   }
 };
