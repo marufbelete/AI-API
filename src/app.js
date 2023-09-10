@@ -4,21 +4,28 @@ const app = express();
 const api_route = require('./routes/index');
 const cors = require('cors');
 const config = require("./config/config");
-
+const cookieParser=require('cookie-parser');
+const sequelize = require("./util/database");
 app.use(cors({
     origin: ['http://localhost:3000',
     'http://localhost:3011',
     'https://ai-app-seven-bice.vercel.app'],
     credentials: true
 }));
+app.use(cookieParser())
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/api',api_route)
 
-app.listen(config.PORT,()=>{
-console.log(`conncted at port${config.PORT}`)
-})
+sequelize.sync().then(async(result)=>{
+    app.listen(config.PORT || 7000,() => {
+      console.log(`Server is running on port ${config.PORT}.`);
+    })
+  }).catch(error=>{
+    console.log(error)
+  })
+
 module.exports = app;
 

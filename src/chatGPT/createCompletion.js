@@ -9,8 +9,11 @@ exports.createCompletion = async (prompt) => {
           temperature: 0.5,
           frequency_penalty: 0.5,
           presence_penalty: 0.5,
+          // stream:true,
           best_of: 1,
         })
+        console.log(gptResponse?.data)
+        // mk
         if (gptResponse?.data) {
           console.log(gptResponse?.data)
           const outputText = gptResponse.data.choices[0].text.replace(/\n/g, "");
