@@ -72,7 +72,12 @@ exports.logoutUser = async (req, res, next) => {
   try {
     console.log("test lear")
 
-    return res.status(200).clearCookie('access_token').json({
+    return res.status(200).clearCookie('access_token',{
+      sameSite: 'none',
+      path: '/',
+      secure: true,
+      httpOnly: true
+    }).json({
       success: true
     })
   } catch (err) {
