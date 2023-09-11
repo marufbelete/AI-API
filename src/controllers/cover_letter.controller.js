@@ -15,7 +15,8 @@ exports.generateCoverLetter = async (req, res, next) => {
     // ${skill_highlight}` 
     const prompt= `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Elevate the following skills and experiences:
     ${skill_highlight}` 
-
+    // prompt given
+    // please write a personalized cover letter for this [job title ] at [company]. Here is the job description: [job description]. And here is my resumer: [resume]
     const cover_letter= await createCompletion(prompt)
         console.log(cover_letter)
     return res.json(cover_letter)
