@@ -7,7 +7,7 @@ const config = require("./config/config");
 const cookieParser=require('cookie-parser');
 const sequelize = require("./util/database");
 app.use(cors({
-    origin: ['http://localhost:3000',
+    origin: ['https://careercompanion.acdp.au',
     'http://localhost:3011',
     'https://ai-app-seven-bice.vercel.app'],
     credentials: true
