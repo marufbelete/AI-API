@@ -41,6 +41,7 @@ exports.generateFieldInfo = async (req, res, next) => {
     // notes: ${info.notes}, link: ${info.link}` 
     const prompt=`Prepare comprehensive information for students regarding the [Department Name] department's training and job opportunities. Ensure that the information is presented in a clear and meaningful way. Below are the details you need to include:
     - Department: ${info.department}
+    - Field: ${info.training}
     - Training Criteria: ${info.eligibility}
     - Training/Job Opportunities: ${info.trainjob}
     - Target Audience: ${info.audience}
@@ -81,9 +82,12 @@ exports.getAllField=async(req,res,next)=>{
 
 exports.getAllTrainingForField=async(req,res,next)=>{
   try {
-    const field=req.query.field
+    const field=req.query?.field
+    if(!field){
+      return res.json([])
+    }
     const result=data.Infomation.find(e=>e.Department===field)
-    const training=result.OpportunityElgi.map(e=>e.Opportunity)
+    const training=result?.OpportunityElgi?.map(e=>e?.Opportunity)
     return res.json(training) 
   } catch (error) {
     next(error)
