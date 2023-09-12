@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const User = sequelize.define("user", {
+const User = sequelize.define("usert", {
   id: {
     type: Sequelize.UUID,
     defaultValue:Sequelize.UUIDV4,
