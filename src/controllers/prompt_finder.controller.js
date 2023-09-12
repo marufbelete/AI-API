@@ -2,11 +2,10 @@ const { createCompletion } = require("../chatGPT/createCompletion");
 const { handleError } = require("../helpers/handleError");
 const { promptFinderSchema } = require("../validation/prompt_finder.validation");
 const fs = require('fs');
-const jsonData = require('../doc/fieldInfo.json');
+const data = require('../doc/fieldInfo.json');
 // console.log(JSON.parse(jsonData))
 const getFilterdDataByFieldAndOportnity=(field,training)=>{
 // const jsonData = fs.readFileSync('../doc/fildInfo.json', 'utf8');
-const data = jsonData;
 const filteredInfo = data.Infomation.find(info =>info.Department === field);
 // console.log(filteredInfo)
 let opportunity_elgi=filteredInfo.OpportunityElgi.find(opportnunity=>opportnunity.Opportunity===training)
@@ -69,6 +68,28 @@ exports.generateFieldInfo = async (req, res, next) => {
   }
 };
 
+
+exports.getAllField=async(req,res,next)=>{
+  try {
+    const result=data.Infomation.map(e=>e.Department)
+    return res.json(result) 
+  } catch (error) {
+    next(error)
+  }
+
+}
+
+exports.getAllTrainingForField=async(req,res,next)=>{
+  try {
+    const field=req.query.field
+    const result=data.Infomation.find(e=>e.Department===field)
+    const training=result.OpportunityElgi.map(e=>e.Opportunity)
+    return res.json(training) 
+  } catch (error) {
+    next(error)
+  }
+
+}
 
 
 
