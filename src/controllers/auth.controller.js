@@ -51,7 +51,6 @@ exports.loginUser = async (req, res, next) => {
             config.ACCESS_TOKEN_SECRET,
             { expiresIn: config.ACCESS_TOKEN_EXPIRES })
         delete user.password
-        console.log(user)
         return res.status(200).cookie("access_token", access_token, {
           sameSite: 'none',
           path: '/',
@@ -70,8 +69,6 @@ exports.loginUser = async (req, res, next) => {
 
 exports.logoutUser = async (req, res, next) => {
   try {
-    console.log("test lear")
-
     return res.status(200).clearCookie('access_token',{
       sameSite: 'none',
       path: '/',
@@ -81,8 +78,6 @@ exports.logoutUser = async (req, res, next) => {
       success: true
     })
   } catch (err) {
-    console.log(err)
-
     next(err);
   }
 };

@@ -3,11 +3,8 @@ const { handleError } = require("../helpers/handleError");
 const { promptFinderSchema } = require("../validation/prompt_finder.validation");
 const fs = require('fs');
 const data = require('../doc/fieldInfo.json');
-// console.log(JSON.parse(jsonData))
 const getFilterdDataByFieldAndOportnity=(field,training)=>{
-// const jsonData = fs.readFileSync('../doc/fildInfo.json', 'utf8');
 const filteredInfo = data.Infomation.find(info =>info.Department === field);
-// console.log(filteredInfo)
 let opportunity_elgi=filteredInfo.OpportunityElgi.find(opportnunity=>opportnunity.Opportunity===training)
   let info={
     department:field,
@@ -25,7 +22,6 @@ return info
 exports.generateFieldInfo = async (req, res, next) => {
   try {
     const {field,training}=req.body
-    console.log(req.body)
     const {error}=promptFinderSchema.validate({field,training})
     if(error){
       handleError(error.message,403)
@@ -55,7 +51,6 @@ exports.generateFieldInfo = async (req, res, next) => {
     // prompt given
     // please write a personalized cover letter for this [job title ] at [company]. Here is the job description: [job description]. And here is my resumer: [resume]
     const cover_letter= await createCompletion(prompt)
-        console.log(cover_letter)
     return res.json(cover_letter)
   //  await new Promise(resolve => {
   //     setTimeout(() => {

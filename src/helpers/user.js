@@ -1,7 +1,6 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-
+const {hash,verify}=require('argon2')
 const isEmailExist = async (email) => {
   const user = await User.findOne({
     where: { email: email }
@@ -10,8 +9,7 @@ const isEmailExist = async (email) => {
 };
 
 const isPasswordCorrect = async (incomingPassword, existingPassword) => {
-  const isMatch = await bcrypt.compare(incomingPassword, existingPassword);
-  return isMatch;
+  return verify(existingPassword,incomingPassword)
 };
 
 const issueToken = async function (param, key,expirey={}) {
@@ -25,9 +23,7 @@ const isTokenValid = async function (token,secret) {
 };
 
 const hashPassword = async (password) => {
-  const salt = await bcrypt.genSalt(10);
-  const hashed = await bcrypt.hash(password, salt);
-  return hashed;
+  return await hash(password)
 };
 
 

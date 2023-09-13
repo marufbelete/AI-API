@@ -5,7 +5,6 @@ const { handleError } = require("../helpers/handleError");
 exports.generateCoverLetter = async (req, res, next) => {
   try {
     const {job_title,company_name,skill_highlight}=req.body
-    console.log(req.body)
     const {error}=coverLetterSchema.validate({job_title,company_name,skill_highlight})
     if(error){
       handleError(error.message,403)
@@ -18,7 +17,6 @@ exports.generateCoverLetter = async (req, res, next) => {
     // prompt given
     // please write a personalized cover letter for this [job title ] at [company]. Here is the job description: [job description]. And here is my resumer: [resume]
     const cover_letter= await createCompletion(prompt)
-        console.log(cover_letter)
     return res.json(cover_letter)
   //  await new Promise(resolve => {
   //     setTimeout(() => {
