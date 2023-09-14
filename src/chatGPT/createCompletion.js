@@ -14,7 +14,8 @@ exports.createCompletion = async (prompt) => {
         })
         // mk
         if (gptResponse?.data) {
-          const outputText = gptResponse.data.choices[0].text.replace(/\n/g, "");
+          console.log(gptResponse.data.choices[0].text)
+          const outputText = gptResponse.data.choices[0].text;
           return outputText
         }
         return gptResponse
