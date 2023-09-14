@@ -15,23 +15,23 @@ exports.generateCoverLetter = async (req, res, next) => {
     // ${skill_highlight}`
     let prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Elevate the following skills and experiences:
     ${skill_highlight}.
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Add <br> for each breakpoint`;
+    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
     
     if (full_name) {
         prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}. Elevate the following skills and experiences:
-    ${skill_highlight}. The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Add <br> for each breakpoint`;
+    ${skill_highlight}. The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
     }
     
     if (year_experince) {
         prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, and working years of experience: ${year_experince}. Elevate the following skills and experiences:
     ${skill_highlight}.    
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Add <br> for each breakpoint`;
+    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
     }
     
     if (resume) {
         prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, working years of experience: ${year_experience}, and resume: ${resume}. Elevate the following skills and experiences:
     ${skill_highlight}.        
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Add <br> for each breakpoint`;
+    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
     }
 //new
     // let prompt= `Craft a professional cover letter with impeccable grammar for the role of ${job_title} for ${company_name}. Elevate the following skills and experiences:
