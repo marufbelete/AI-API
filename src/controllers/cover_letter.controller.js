@@ -13,26 +13,28 @@ exports.generateCoverLetter = async (req, res, next) => {
     // const prompt=`Compose a compelling cover letter with good grammer for the position of ${job_title} at ${company_name}. Highlight the following skills and experiences:
 
     // ${skill_highlight}`
-    let prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Elevate the following skills and experiences:
-    ${skill_highlight}.
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
+    let prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Highlight the following skills and experiences: ${skill_highlight}.
+    
+    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
     
     if (full_name) {
-        prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}. Elevate the following skills and experiences:
-    ${skill_highlight}. The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
+        prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}. Highlight the following skills and experiences: ${skill_highlight}.
+        
+    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
     }
     
     if (year_experince) {
-        prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, and working years of experience: ${year_experince}. Elevate the following skills and experiences:
-    ${skill_highlight}.    
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
+        prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, and working years of experience: ${year_experince}. Highlight the following skills and experiences: ${skill_highlight}.
+        
+    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
     }
     
     if (resume) {
-        prompt = `Craft a professional cover letter with impeccable grammar for the role of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, working years of experience: ${year_experience}, and resume: ${resume}. Elevate the following skills and experiences:
-    ${skill_highlight}.        
-    The cover letter must be three or more paragraphs with proper indentation and three spaces between each paragraph. Must add <br> for a breakpoint`;
+        prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, working years of experience: ${year_experience}, and resume: ${resume}. Highlight the following skills and experiences: ${skill_highlight}.
+        
+    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
     }
+    
 //new
     // let prompt= `Craft a professional cover letter with impeccable grammar for the role of ${job_title} for ${company_name}. Elevate the following skills and experiences:
     // ${skill_highlight} The cover letter must be three or more paragraph with proper indentation and space between each paragraph` 
