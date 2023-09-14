@@ -15,24 +15,24 @@ exports.generateCoverLetter = async (req, res, next) => {
     // ${skill_highlight}`
     let prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Highlight the following skills and experiences: ${skill_highlight}.
     
-    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
+    The cover letter must consist of three or more well-structured paragraphs. Must have proper indentation and include <br> tags for line breaks.`;
     
     if (full_name) {
         prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}. Highlight the following skills and experiences: ${skill_highlight}.
         
-    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
+    The cover letter must consist of three or more well-structured paragraphs. Must have proper indentation and include <br> tags for line breaks.`;
     }
     
     if (year_experince) {
         prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, and working years of experience: ${year_experince}. Highlight the following skills and experiences: ${skill_highlight}.
         
-    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
+    The cover letter must consist of three or more well-structured paragraphs. Must have proper indentation and include <br> tags for line breaks.`;
     }
     
     if (resume) {
         prompt = `Craft a compelling cover letter for the position of ${job_title} at ${company_name}. Here is the detail of the person's full name: ${full_name}, working years of experience: ${year_experience}, and resume: ${resume}. Highlight the following skills and experiences: ${skill_highlight}.
         
-    The cover letter must consist of three or more well-structured paragraphs. Ensure proper indentation and include <br> tags for paragraph breaks.`;
+    The cover letter must consist of three or more well-structured paragraphs. Must have proper indentation and include <br> tags for line breaks.`;
     }
     
 //new
