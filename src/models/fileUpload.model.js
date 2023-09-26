@@ -1,36 +1,25 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../util/database");
 
-const User = sequelize.define("usert", {
+const fileUpload = sequelize.define("file_upload", {
   id: {
     type: Sequelize.UUID,
     defaultValue:Sequelize.UUIDV4,
     primaryKey: true,
     allowNull: false,
   },
-  first_name: {
+  key: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  last_name: {
+  name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  email: {
+  type: {
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
-  },
-  avatar: {
-    type: Sequelize.STRING,
-  },
-  role: {
-    type: Sequelize.ENUM('admin','user'),
-    defaultValue:'user',
-  },
-  password: {
-    type: Sequelize.STRING,
   }
 });
 
-module.exports = User;
+module.exports =fileUpload;

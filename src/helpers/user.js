@@ -1,6 +1,8 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
-const {hash,verify}=require('argon2')
+// const {hash,verify}=require('argon2')
+const bcrypt = require("bcryptjs");
+
 const isEmailExist = async (email) => {
   const user = await User.findOne({
     where: { email: email }
@@ -9,7 +11,9 @@ const isEmailExist = async (email) => {
 };
 
 const isPasswordCorrect = async (incomingPassword, existingPassword) => {
-  return verify(existingPassword,incomingPassword)
+  const isMatch = await bcrypt.compare(incomingPassword, existingPassword);
+  return isMatch;
+  // return verify(existingPassword,incomingPassword)
 };
 
 const issueToken = async function (param, key,expirey={}) {
@@ -23,8 +27,23 @@ const isTokenValid = async function (token,secret) {
 };
 
 const hashPassword = async (password) => {
-  return await hash(password)
+  const salt = await bcrypt.genSalt(10);
+  const hashed = await bcrypt.hash(password, salt);
+  return hashed;
+  // return await hash(password)
 };
+const removeDuplicatesByPropertyName=(arr, propertyName) =>{
+  const uniqueArray = [];
+  const uniqueValues = [];
+  arr.forEach((obj) => {
+    const value = obj[propertyName];
+    if (!uniqueValues.includes(value)) {
+      uniqueArray.push(obj);
+      uniqueValues.push(value);
+    }
+  });
+  return uniqueArray;
+}
 
 
 
@@ -34,5 +53,6 @@ module.exports = {
   isPasswordCorrect,
   issueToken,
   hashPassword,
-  isTokenValid
+  isTokenValid,
+  removeDuplicatesByPropertyName
 };

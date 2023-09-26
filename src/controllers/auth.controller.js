@@ -47,7 +47,7 @@ exports.loginUser = async (req, res, next) => {
     if (user) {
       if (await isPasswordCorrect(password, user.password)) {
         const access_token = await issueToken(
-            { sub: user?.id, email: user.email },
+            { sub: user?.id, email: user.email ,role:user.role},
             config.ACCESS_TOKEN_SECRET,
             { expiresIn: config.ACCESS_TOKEN_EXPIRES })
         delete user.password

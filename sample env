@@ -1,2 +1,16 @@
 PORT=7000
 OPENAI_KEY="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"api.careercompanion.au
+   
+    // if (full_name) {
+    //     prompt = `${prompt} Here is the detail of the person's full name: ${full_name},`;
+    // }
+    
+    // if (year_experince) {
+    //     prompt = `${prompt}, working years of experience: ${year_experince},`;
+    // }
+    
+    // if (resume) {
+    //     prompt = `${prompt} `;
+    // }
+    
+    // prompt=`${prompt}. `

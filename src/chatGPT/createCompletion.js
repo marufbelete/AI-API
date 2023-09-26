@@ -5,7 +5,7 @@ exports.createCompletion = async (prompt) => {
           model: 'text-davinci-003',
           temperature:0.2,
           prompt: prompt,
-          max_tokens: 3700,
+          max_tokens: 1500,
           temperature: 0.5,
           frequency_penalty: 0.5,
           presence_penalty: 0.5,
@@ -14,7 +14,7 @@ exports.createCompletion = async (prompt) => {
         })
         // mk
         if (gptResponse?.data) {
-          console.log(gptResponse.data.choices[0].text)
+          // console.log(gptResponse.data.choices[0].text)
           const outputText = gptResponse.data.choices[0].text;
           return outputText
         }
