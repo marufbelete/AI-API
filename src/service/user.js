@@ -10,8 +10,14 @@ const fetchUserById=async(userId,transaction={})=>{
   return result;
 }
 
+const fetchUsers=async(transaction={})=>{
+  const  result= await User.findAll()
+  return result;
+}
+
 
 module.exports={
 insertUser,
-fetchUserById
+fetchUserById,
+fetchUsers
 }

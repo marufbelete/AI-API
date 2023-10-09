@@ -4,16 +4,16 @@ const { handleError } = require("../helpers/handleError");
 const { issueToken, isEmailExist,
 hashPassword, isPasswordCorrect} = require("../helpers/user");
 const config = require("../config/config");
-const {insertUser, fetchUserById} = require("../service/user");
+const {insertUser, fetchUserById, fetchUsers} = require("../service/user");
 const sequelize = require('../util/database');
 
 
 exports.registerUser = async (req, res, next) => {
   try {
     return await sequelize.transaction(async (t) => {
-      const { first_name, last_name, email, password } = req.body;
+      const { first_name, last_name, email, password,createdAt } = req.body;
       const { error } = signupUserSchema.validate({
-        first_name, last_name, email, password
+        first_name, last_name, email, password,createdAt
       })
       if (error) {
         handleError(error.message, 403)
@@ -24,7 +24,7 @@ exports.registerUser = async (req, res, next) => {
         }
       const hashedPassword = await hashPassword(password);
        await insertUser({
-        first_name, last_name,
+        first_name, last_name,createdAt,
         email,password: hashedPassword,
       }, { transaction: t });
       return res.status(201).json({ success: true});
@@ -77,6 +77,15 @@ exports.logoutUser = async (req, res, next) => {
     }).json({
       success: true
     })
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.getUsers = async (req, res, next) => {
+  try {
+    const users=await fetchUsers()
+    return res.json(users)
   } catch (err) {
     next(err);
   }

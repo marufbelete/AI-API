@@ -5,6 +5,7 @@ const Joi = require('joi');
     last_name: Joi.string().required(),
     email: Joi.string().required().email(),
     avatar: Joi.string(),
+    createdAt: Joi.string(),
     password: Joi.string().min(8).required(),
 });
 

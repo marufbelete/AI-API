@@ -1,7 +1,7 @@
 const express=require('express')
 const route=express.Router({ mergeParams: true })
 const {registerUser,loginUser, 
-logoutUser,checkAuth}=require('../controllers/auth.controller')
+logoutUser,checkAuth, getUsers}=require('../controllers/auth.controller')
 const {errorHandler}=require('../middleware/errohandling.middleware')
 const { authenticateJWT } = require('../middleware/auth.middleware')
 
@@ -20,6 +20,10 @@ route.post('/logout',
 route.post('/checkauth',
     authenticateJWT,
     checkAuth,
+    errorHandler)
+
+route.post('/users',
+     getUsers,
     errorHandler)
 
  module.exports=route
