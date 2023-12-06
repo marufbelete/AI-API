@@ -10,6 +10,7 @@ app.use(cors({
     origin: ['https://careercompanion.au',
     'http://localhost:3011',
     'http://localhost:5000',
+    'https://ai-app-marufbelete.vercel.app',
     'https://ai-app-seven-bice.vercel.app'],
     credentials: true
 }));
