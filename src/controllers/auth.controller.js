@@ -53,6 +53,7 @@ exports.loginUser = async (req, res, next) => {
         delete user.password
         return res.status(200).cookie("access_token", access_token, {
           sameSite: 'none',
+          domain:'https://ai-app-seven-bice.vercel.app'
           path: '/',
           secure: true,
           httpOnly: true
