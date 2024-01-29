@@ -52,7 +52,7 @@ exports.loginUser = async (req, res, next) => {
             { expiresIn: config.ACCESS_TOKEN_EXPIRES })
         delete user.password
         return res.status(200).cookie("access_token", access_token, {
-          sameSite: 'none',
+          sameSite: 'lax',
           path: '/',
           secure: true,
           httpOnly: true
